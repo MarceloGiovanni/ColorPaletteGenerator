@@ -19,6 +19,7 @@ export const ColorPalettePage = () => {
     s: 100,
     l: 50,
   });
+  const [generatedSlColor, setGeneratedSlColor] = useState<SlColor | null>(null);
   const [swatches, setSwatches] = useState<SwatchItem[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -31,6 +32,7 @@ export const ColorPalettePage = () => {
         cache
       );
       setSwatches(uniqueColors);
+      setGeneratedSlColor({ s: slColor.s, l: slColor.l });
     } catch {
       toast.error("Failed to fetch colors");
     } finally {
@@ -76,10 +78,10 @@ export const ColorPalettePage = () => {
         </Box>
       )}
 
-      {!loading && swatches.length > 0 && (
+      {!loading && swatches.length > 0 && generatedSlColor && (
         <Box>
           <Typography variant="h6" gutterBottom>
-            Color Palette ({swatches.length} unique colors)
+            Color Palette for Saturation {generatedSlColor.s} and Lightness {generatedSlColor.l} ({swatches.length} unique colors)
           </Typography>
           <ColorSwatchGrid items={swatches} />
         </Box>

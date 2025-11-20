@@ -28,7 +28,8 @@ const GridRoot = styled("div")(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))",
   gap: theme.spacing(2),
-  padding: theme.spacing(2),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
   [theme.breakpoints.up("sm")]: {
     gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
   },
